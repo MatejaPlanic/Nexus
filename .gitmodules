@@ -1,0 +1,3 @@
+[submodule "Nexus/external/spdlog"]
+	path = Nexus/external/spdlog
+	url = https://github.com/gabime/spdlog
