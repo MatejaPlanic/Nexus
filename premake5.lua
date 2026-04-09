@@ -10,6 +10,11 @@ workspace "Nexus"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+IncludeDir = {}
+IncludeDir["GLFW"] = "Nexus/external/glfw/include"
+
+include "Nexus/external/glfw"
+
 project "Nexus"
 	location "Nexus"
 	kind "SharedLib"
@@ -30,7 +35,14 @@ project "Nexus"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/external/spdlog/include"
+		"%{prj.name}/external/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
