@@ -12,6 +12,7 @@
 #include <unordered_map>
 #include <unordered_set>
 
+#include "Nexus/Log.h"
 
 #ifdef NX_PLATFORM_WINDOWS
 	#include <Windows.h>
