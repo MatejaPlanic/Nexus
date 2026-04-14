@@ -37,6 +37,12 @@
     <ClInclude Include="src\Nexus\Events\MouseEvent.h">
       <Filter>Nexus\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Nexus\Layer.h">
+      <Filter>Nexus</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nexus\LayerStack.h">
+      <Filter>Nexus</Filter>
+    </ClInclude>
     <ClInclude Include="src\Nexus\Log.h">
       <Filter>Nexus</Filter>
     </ClInclude>
@@ -50,6 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Nexus\Application.cpp">
+      <Filter>Nexus</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nexus\Layer.cpp">
+      <Filter>Nexus</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nexus\LayerStack.cpp">
       <Filter>Nexus</Filter>
     </ClCompile>
     <ClCompile Include="src\Nexus\Log.cpp">
