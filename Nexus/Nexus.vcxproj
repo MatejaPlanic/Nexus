@@ -84,7 +84,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/MDd /utf-8 %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp23</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -114,7 +114,7 @@ IF EXIST ..\bin\Debug-windows-x86_64\Nexus\Nexus.dll\ (xcopy /Q /E /Y /I ..\bin\
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/MD /utf-8 %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp23</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -145,7 +145,7 @@ IF EXIST ..\bin\Release-windows-x86_64\Nexus\Nexus.dll\ (xcopy /Q /E /Y /I ..\bi
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/MD /utf-8 %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp23</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -172,6 +172,8 @@ IF EXIST ..\bin\Dist-windows-x86_64\Nexus\Nexus.dll\ (xcopy /Q /E /Y /I ..\bin\D
     <ClInclude Include="src\Nexus\Events\Event.h" />
     <ClInclude Include="src\Nexus\Events\KeyEvent.h" />
     <ClInclude Include="src\Nexus\Events\MouseEvent.h" />
+    <ClInclude Include="src\Nexus\Layer.h" />
+    <ClInclude Include="src\Nexus\LayerStack.h" />
     <ClInclude Include="src\Nexus\Log.h" />
     <ClInclude Include="src\Nexus\Window.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
@@ -179,6 +181,8 @@ IF EXIST ..\bin\Dist-windows-x86_64\Nexus\Nexus.dll\ (xcopy /Q /E /Y /I ..\bin\D
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Nexus\Application.cpp" />
+    <ClCompile Include="src\Nexus\Layer.cpp" />
+    <ClCompile Include="src\Nexus\LayerStack.cpp" />
     <ClCompile Include="src\Nexus\Log.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\nxpch.cpp">

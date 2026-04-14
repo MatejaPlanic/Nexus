@@ -63,14 +63,17 @@ project "Nexus"
 
 	filter "configurations:Debug"
 		defines "NX_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "NX_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "NX_DIST"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "system:windows"
@@ -113,14 +116,17 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "NX_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "NX_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "NX_DIST"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "system:windows"
