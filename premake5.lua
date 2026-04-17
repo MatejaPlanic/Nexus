@@ -12,8 +12,12 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
 IncludeDir["GLFW"] = "Nexus/external/glfw/include"
+IncludeDir["Glad"] = "Nexus/external/glad/include"
+IncludeDir["Imgui"] = "Nexus/external/imgui"
 
 include "Nexus/external/glfw"
+include "Nexus/external/glad"
+include "Nexus/external/imgui"
 
 project "Nexus"
 	location "Nexus"
@@ -36,12 +40,16 @@ project "Nexus"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/external/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.Imgui}"
 	}
 
 	links
 	{
 		"GLFW",
+		"Glad",
+		"Imgui",
 		"opengl32.lib"
 	}
 
@@ -52,7 +60,8 @@ project "Nexus"
 		defines
 		{
 			"NX_PLATFORM_WINDOWS",
-			"NX_BUILD_DLL"
+			"NX_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands

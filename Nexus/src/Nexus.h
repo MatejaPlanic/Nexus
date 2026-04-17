@@ -6,4 +6,6 @@
 
 #include "Nexus/Layer.h"
 
+#include "Nexus/Imgui/ImGuiLayer.h"	
+
 #include "Nexus/Log.h"

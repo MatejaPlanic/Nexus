@@ -7,8 +7,14 @@
     <Filter Include="Nexus\Events">
       <UniqueIdentifier>{9CB438EF-8817-C893-319D-004A1DDF9316}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Nexus\Imgui">
+      <UniqueIdentifier>{02CFB1C1-6E84-2AB7-F778-248E632D21BB}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Platform">
       <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\OpenGL">
+      <UniqueIdentifier>{1E7D2C1D-8A08-9AE1-9319-1DD6FF23F6E1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Platform\Windows">
       <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
@@ -37,6 +43,9 @@
     <ClInclude Include="src\Nexus\Events\MouseEvent.h">
       <Filter>Nexus\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Nexus\Imgui\ImGuiLayer.h">
+      <Filter>Nexus\Imgui</Filter>
+    </ClInclude>
     <ClInclude Include="src\Nexus\Layer.h">
       <Filter>Nexus</Filter>
     </ClInclude>
@@ -49,6 +58,9 @@
     <ClInclude Include="src\Nexus\Window.h">
       <Filter>Nexus</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLImpl.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
@@ -58,6 +70,9 @@
     <ClCompile Include="src\Nexus\Application.cpp">
       <Filter>Nexus</Filter>
     </ClCompile>
+    <ClCompile Include="src\Nexus\Imgui\ImGuiLayer.cpp">
+      <Filter>Nexus\Imgui</Filter>
+    </ClCompile>
     <ClCompile Include="src\Nexus\Layer.cpp">
       <Filter>Nexus</Filter>
     </ClCompile>
@@ -66,6 +81,9 @@
     </ClCompile>
     <ClCompile Include="src\Nexus\Log.cpp">
       <Filter>Nexus</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLImpl.cpp">
+      <Filter>Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>Platform\Windows</Filter>

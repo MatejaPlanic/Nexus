@@ -79,8 +79,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>nxpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>NX_PLATFORM_WINDOWS;NX_BUILD_DLL;NX_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;external\spdlog\include;external\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NX_PLATFORM_WINDOWS;NX_BUILD_DLL;GLFW_INCLUDE_NONE;NX_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;external\spdlog\include;external\glfw\include;external\glad\include;external\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -106,8 +106,8 @@ IF EXIST ..\bin\Debug-windows-x86_64\Nexus\Nexus.dll\ (xcopy /Q /E /Y /I ..\bin\
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>nxpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>NX_PLATFORM_WINDOWS;NX_BUILD_DLL;NX_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;external\spdlog\include;external\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NX_PLATFORM_WINDOWS;NX_BUILD_DLL;GLFW_INCLUDE_NONE;NX_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;external\spdlog\include;external\glfw\include;external\glad\include;external\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -137,8 +137,8 @@ IF EXIST ..\bin\Release-windows-x86_64\Nexus\Nexus.dll\ (xcopy /Q /E /Y /I ..\bi
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>nxpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>NX_PLATFORM_WINDOWS;NX_BUILD_DLL;NX_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;external\spdlog\include;external\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NX_PLATFORM_WINDOWS;NX_BUILD_DLL;GLFW_INCLUDE_NONE;NX_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;external\spdlog\include;external\glfw\include;external\glad\include;external\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -172,18 +172,22 @@ IF EXIST ..\bin\Dist-windows-x86_64\Nexus\Nexus.dll\ (xcopy /Q /E /Y /I ..\bin\D
     <ClInclude Include="src\Nexus\Events\Event.h" />
     <ClInclude Include="src\Nexus\Events\KeyEvent.h" />
     <ClInclude Include="src\Nexus\Events\MouseEvent.h" />
+    <ClInclude Include="src\Nexus\Imgui\ImGuiLayer.h" />
     <ClInclude Include="src\Nexus\Layer.h" />
     <ClInclude Include="src\Nexus\LayerStack.h" />
     <ClInclude Include="src\Nexus\Log.h" />
     <ClInclude Include="src\Nexus\Window.h" />
+    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLImpl.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\nxpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Nexus\Application.cpp" />
+    <ClCompile Include="src\Nexus\Imgui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Nexus\Layer.cpp" />
     <ClCompile Include="src\Nexus\LayerStack.cpp" />
     <ClCompile Include="src\Nexus\Log.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLImpl.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\nxpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
@@ -192,6 +196,12 @@ IF EXIST ..\bin\Dist-windows-x86_64\Nexus\Nexus.dll\ (xcopy /Q /E /Y /I ..\bin\D
   <ItemGroup>
     <ProjectReference Include="external\glfw\GLFW.vcxproj">
       <Project>{154B857C-0182-860D-AA6E-6C109684020F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="external\glad\Glad.vcxproj">
+      <Project>{BDD6857C-A90D-870D-52FA-6C103E10030F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="external\imgui\ImGui.vcxproj">
+      <Project>{C0FF640D-2C14-8DBE-F595-301E616989EF}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
