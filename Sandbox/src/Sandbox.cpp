@@ -16,16 +16,13 @@ public:
 	}
 };
 
-
-
-
-
 class Sandbox : public Nexus::Application
 {
 public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
+		PushOverlay(new Nexus::ImGuiLayer());
 	}
 	~Sandbox()
 	{
