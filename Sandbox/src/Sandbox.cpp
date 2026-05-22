@@ -1,4 +1,5 @@
 #include "Nexus.h"
+#include <imgui/imgui.h>
 
 class ExampleLayer : public Nexus::Layer
 {
@@ -7,13 +8,17 @@ public:
 
 	void OnUpdate() override
 	{
-		NX_INFO("ExampleLayer::Update");
+		if (Nexus::Input::IsKeyPressed(NX_KEY_TAB))
+			NX_INFO("Tab key is pressed!");
 	}
 
-	void OnEvent(Nexus::Event& event) override
+	void OnImGuiRender() override
 	{
-		NX_INFO("{0}", event.ToString());
+		ImGui::Begin("Example");
+		ImGui::Text("Hello, world!");
+		ImGui::End();
 	}
+
 };
 
 class Sandbox : public Nexus::Application
@@ -22,7 +27,6 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
-		PushOverlay(new Nexus::ImGuiLayer());
 	}
 	~Sandbox()
 	{

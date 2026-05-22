@@ -6,6 +6,8 @@
 #include "Events/ApplicationEvent.h"
 #include "Nexus/LayerStack.h"
 
+#include "Nexus/Imgui/ImGuiLayer.h"
+
 namespace Nexus
 {
 	class NEXUS_API Application
@@ -27,6 +29,7 @@ namespace Nexus
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 	private:
