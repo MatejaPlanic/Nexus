@@ -4,6 +4,8 @@
 
 #include <GLFW/glfw3.h>
 
+#include "Nexus/Renderer/GraphicsContext.h"
+
 namespace Nexus {
 
 	class WindowsWindow : public Window
@@ -20,6 +22,8 @@ namespace Nexus {
 		void SetEventCallback(const EventCallbackFn& callback) override { m_Data.EventCallback = callback; }
 		void SetVSync(bool enabled) override;
 		bool IsVSync() const override;
+
+		inline virtual void* GetNativeWindow() const override { return m_Window; }
 	
 	private:
 		virtual void Init(const WindowProps& props);
@@ -27,6 +31,7 @@ namespace Nexus {
 
 	private:
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 		struct WindowData
 		{

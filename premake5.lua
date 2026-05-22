@@ -14,6 +14,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Nexus/external/glfw/include"
 IncludeDir["Glad"] = "Nexus/external/glad/include"
 IncludeDir["Imgui"] = "Nexus/external/imgui"
+IncludeDir["glm"] = "Nexus/external/glm"
 
 include "Nexus/external/glfw"
 include "Nexus/external/glad"
@@ -33,7 +34,9 @@ project "Nexus"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/external/glm/glm/**.hpp",
+		"%{prj.name}/external/glm/glm/**.inl"
 	}
 
 	includedirs
@@ -42,7 +45,8 @@ project "Nexus"
 		"%{prj.name}/external/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.Imgui}"
+		"%{IncludeDir.Imgui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links
@@ -105,7 +109,9 @@ project "Sandbox"
 	includedirs
 	{
 		"Nexus/external/spdlog/include",
-		"Nexus/src"
+		"Nexus/src",
+		"%{IncludeDir.glm}",
+		"Nexus/external"
 	}
 
 	links
