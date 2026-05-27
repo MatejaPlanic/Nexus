@@ -110,7 +110,7 @@ namespace Nexus {
 		uint32_t m_Stride = 0;
 	};
 
-	class VertexBuffer
+	class NEXUS_API VertexBuffer
 	{
 	public:
 		virtual ~VertexBuffer() {}
@@ -124,7 +124,7 @@ namespace Nexus {
 		static VertexBuffer* Create(float* vertices, uint32_t size);
 	};
 
-	class IndexBuffer
+	class NEXUS_API IndexBuffer
 	{
 	public:
 		virtual ~IndexBuffer() {}

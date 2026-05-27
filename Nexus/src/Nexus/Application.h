@@ -8,10 +8,6 @@
 
 #include "Nexus/Imgui/ImGuiLayer.h"
 
-#include "Nexus/Renderer/Shader.h"
-#include "Renderer/Buffer.h"
-#include "Nexus/Renderer/VertexArray.h"
-
 namespace Nexus
 {
 	class NEXUS_API Application
@@ -36,12 +32,6 @@ namespace Nexus
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
-
-		std::shared_ptr<Shader> m_Shader;
-		std::shared_ptr<VertexArray> m_VertexArray;
-
-		std::shared_ptr<VertexArray> m_SquareVertexArray;
-		std::shared_ptr<Shader> m_Shader2;
 	private:
 		static Application* s_Instance;
 	};

@@ -34,8 +34,14 @@
     <Filter Include="src\Nexus\Imgui">
       <UniqueIdentifier>{99028CD9-058E-F99D-0E9F-7C927AA9559E}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Nexus\Renderer">
+      <UniqueIdentifier>{957A17F5-815E-D84A-EABE-D29DD6C1C2CC}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Platform">
       <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Platform\OpenGL">
+      <UniqueIdentifier>{35A49437-A105-7245-2A73-B8F796D3A804}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Platform\Windows">
       <UniqueIdentifier>{5B054582-4794-CE4B-F0B2-E246DC20DFF1}</UniqueIdentifier>
@@ -1344,8 +1350,44 @@
     <ClInclude Include="src\Nexus\MouseButtonCodes.h">
       <Filter>src\Nexus</Filter>
     </ClInclude>
+    <ClInclude Include="src\Nexus\Renderer\Buffer.h">
+      <Filter>src\Nexus\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nexus\Renderer\GraphicsContext.h">
+      <Filter>src\Nexus\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nexus\Renderer\OrthographicCamera.h">
+      <Filter>src\Nexus\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nexus\Renderer\RenderCommand.h">
+      <Filter>src\Nexus\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nexus\Renderer\Renderer.h">
+      <Filter>src\Nexus\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nexus\Renderer\RendererAPI.h">
+      <Filter>src\Nexus\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nexus\Renderer\Shader.h">
+      <Filter>src\Nexus\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nexus\Renderer\VertexArray.h">
+      <Filter>src\Nexus\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Nexus\Window.h">
       <Filter>src\Nexus</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h">
+      <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsInput.h">
       <Filter>src\Platform\Windows</Filter>
@@ -1356,17 +1398,6 @@
     <ClInclude Include="src\nxpch.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Nexus\Renderer\GraphicsContext.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
-    <ClInclude Include="src\Nexus\Renderer\Shader.h" />
-    <ClInclude Include="src\Nexus\Renderer\Buffer.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
-    <ClInclude Include="src\Nexus\Renderer\Renderer.h" />
-    <ClInclude Include="src\Nexus\Renderer\VertexArray.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
-    <ClInclude Include="src\Nexus\Renderer\RendererAPI.h" />
-    <ClInclude Include="src\Nexus\Renderer\RenderCommand.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Nexus\Application.cpp">
@@ -1387,6 +1418,39 @@
     <ClCompile Include="src\Nexus\Log.cpp">
       <Filter>src\Nexus</Filter>
     </ClCompile>
+    <ClCompile Include="src\Nexus\Renderer\Buffer.cpp">
+      <Filter>src\Nexus\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nexus\Renderer\OrthographicCamera.cpp">
+      <Filter>src\Nexus\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nexus\Renderer\RenderCommand.cpp">
+      <Filter>src\Nexus\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nexus\Renderer\Renderer.cpp">
+      <Filter>src\Nexus\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nexus\Renderer\RendererAPI.cpp">
+      <Filter>src\Nexus\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nexus\Renderer\Shader.cpp">
+      <Filter>src\Nexus\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nexus\Renderer\VertexArray.cpp">
+      <Filter>src\Nexus\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
@@ -1396,15 +1460,5 @@
     <ClCompile Include="src\nxpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
-    <ClCompile Include="src\Nexus\Renderer\Shader.cpp" />
-    <ClCompile Include="src\Nexus\Renderer\Buffer.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
-    <ClCompile Include="src\Nexus\Renderer\Renderer.cpp" />
-    <ClCompile Include="src\Nexus\Renderer\VertexArray.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
-    <ClCompile Include="src\Nexus\Renderer\RendererAPI.cpp" />
-    <ClCompile Include="src\Nexus\Renderer\RenderCommand.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
   </ItemGroup>
 </Project>
