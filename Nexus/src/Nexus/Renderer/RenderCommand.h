@@ -3,7 +3,7 @@
 #include "RendererAPI.h"
 
 namespace Nexus {
-	class RenderCommand
+	class NEXUS_API RenderCommand
 	{
 	public:
 		inline static void SetClearColor(const glm::vec4& color)

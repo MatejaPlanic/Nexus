@@ -5,7 +5,7 @@
 
 namespace Nexus {
 
-	class RendererAPI
+	class NEXUS_API RendererAPI
 	{
 	public:
 		enum class API
