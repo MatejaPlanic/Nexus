@@ -3,6 +3,8 @@
 #include "Nexus/Core.h"
 #include "Nexus/Events/Event.h"
 
+#include "Nexus/Core/TimeStep.h"
+
 namespace Nexus {
 	class NEXUS_API Layer
 	{
@@ -12,7 +14,7 @@ namespace Nexus {
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(Timestep ts) {}
 		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& event) {}
 

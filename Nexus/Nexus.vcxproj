@@ -80,7 +80,7 @@
       <PrecompiledHeaderFile>nxpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>NX_PLATFORM_WINDOWS;NX_BUILD_DLL;GLFW_INCLUDE_NONE;NX_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;external\spdlog\include;external\glfw\include;external\glad\include;external\imgui;external\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;external\spdlog\include;external\glfw\include;external\glad\include;external\imgui;external\glm;external\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -107,7 +107,7 @@ IF EXIST ..\bin\Debug-windows-x86_64\Nexus\Nexus.dll\ (xcopy /Q /E /Y /I ..\bin\
       <PrecompiledHeaderFile>nxpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>NX_PLATFORM_WINDOWS;NX_BUILD_DLL;GLFW_INCLUDE_NONE;NX_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;external\spdlog\include;external\glfw\include;external\glad\include;external\imgui;external\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;external\spdlog\include;external\glfw\include;external\glad\include;external\imgui;external\glm;external\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -138,7 +138,7 @@ IF EXIST ..\bin\Release-windows-x86_64\Nexus\Nexus.dll\ (xcopy /Q /E /Y /I ..\bi
       <PrecompiledHeaderFile>nxpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>NX_PLATFORM_WINDOWS;NX_BUILD_DLL;GLFW_INCLUDE_NONE;NX_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;external\spdlog\include;external\glfw\include;external\glad\include;external\imgui;external\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;external\spdlog\include;external\glfw\include;external\glad\include;external\imgui;external\glm;external\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -583,9 +583,11 @@ IF EXIST ..\bin\Dist-windows-x86_64\Nexus\Nexus.dll\ (xcopy /Q /E /Y /I ..\bin\D
     <ClInclude Include="external\glm\glm\vec3.hpp" />
     <ClInclude Include="external\glm\glm\vec4.hpp" />
     <ClInclude Include="external\glm\glm\vector_relational.hpp" />
+    <ClInclude Include="external\stb_image\stb_image.h" />
     <ClInclude Include="src\Nexus.h" />
     <ClInclude Include="src\Nexus\Application.h" />
     <ClInclude Include="src\Nexus\Core.h" />
+    <ClInclude Include="src\Nexus\Core\TimeStep.h" />
     <ClInclude Include="src\Nexus\EntryPoint.h" />
     <ClInclude Include="src\Nexus\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Nexus\Events\Event.h" />
@@ -605,17 +607,21 @@ IF EXIST ..\bin\Dist-windows-x86_64\Nexus\Nexus.dll\ (xcopy /Q /E /Y /I ..\bin\D
     <ClInclude Include="src\Nexus\Renderer\Renderer.h" />
     <ClInclude Include="src\Nexus\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Nexus\Renderer\Shader.h" />
+    <ClInclude Include="src\Nexus\Renderer\Texture.h" />
     <ClInclude Include="src\Nexus\Renderer\VertexArray.h" />
     <ClInclude Include="src\Nexus\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\nxpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="external\stb_image\stb_image.cpp" />
     <ClCompile Include="src\Nexus\Application.cpp" />
     <ClCompile Include="src\Nexus\Imgui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Nexus\Imgui\ImGuiLayer.cpp" />
@@ -628,10 +634,13 @@ IF EXIST ..\bin\Dist-windows-x86_64\Nexus\Nexus.dll\ (xcopy /Q /E /Y /I ..\bin\D
     <ClCompile Include="src\Nexus\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Nexus\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Nexus\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Nexus\Renderer\Texture.cpp" />
     <ClCompile Include="src\Nexus\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />

@@ -22,11 +22,17 @@
     <Filter Include="external\glm\glm\gtx">
       <UniqueIdentifier>{A84358C0-94D2-E189-3DF1-F584295FF22F}</UniqueIdentifier>
     </Filter>
+    <Filter Include="external\stb_image">
+      <UniqueIdentifier>{C27B45E0-AE5F-0636-17C0-008903C3F0B7}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src">
       <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Nexus">
       <UniqueIdentifier>{0FF678B3-7B60-2D2A-C49E-DECF30480B7F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Nexus\Core">
+      <UniqueIdentifier>{C73BF999-B309-ED9F-9C9D-5DC6880AC904}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Nexus\Events">
       <UniqueIdentifier>{135B5902-FF53-7854-2886-5DD914DE5760}</UniqueIdentifier>
@@ -1305,6 +1311,9 @@
     <ClInclude Include="external\glm\glm\vector_relational.hpp">
       <Filter>external\glm\glm</Filter>
     </ClInclude>
+    <ClInclude Include="external\stb_image\stb_image.h">
+      <Filter>external\stb_image</Filter>
+    </ClInclude>
     <ClInclude Include="src\Nexus.h">
       <Filter>src</Filter>
     </ClInclude>
@@ -1313,6 +1322,9 @@
     </ClInclude>
     <ClInclude Include="src\Nexus\Core.h">
       <Filter>src\Nexus</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nexus\Core\TimeStep.h">
+      <Filter>src\Nexus\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Nexus\EntryPoint.h">
       <Filter>src\Nexus</Filter>
@@ -1371,6 +1383,9 @@
     <ClInclude Include="src\Nexus\Renderer\Shader.h">
       <Filter>src\Nexus\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Nexus\Renderer\Texture.h">
+      <Filter>src\Nexus\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Nexus\Renderer\VertexArray.h">
       <Filter>src\Nexus\Renderer</Filter>
     </ClInclude>
@@ -1384,6 +1399,12 @@
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h">
@@ -1400,6 +1421,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="external\stb_image\stb_image.cpp">
+      <Filter>external\stb_image</Filter>
+    </ClCompile>
     <ClCompile Include="src\Nexus\Application.cpp">
       <Filter>src\Nexus</Filter>
     </ClCompile>
@@ -1436,6 +1460,9 @@
     <ClCompile Include="src\Nexus\Renderer\Shader.cpp">
       <Filter>src\Nexus\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Nexus\Renderer\Texture.cpp">
+      <Filter>src\Nexus\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Nexus\Renderer\VertexArray.cpp">
       <Filter>src\Nexus\Renderer</Filter>
     </ClCompile>
@@ -1446,6 +1473,12 @@
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp">

@@ -15,6 +15,7 @@ IncludeDir["GLFW"] = "Nexus/external/glfw/include"
 IncludeDir["Glad"] = "Nexus/external/glad/include"
 IncludeDir["Imgui"] = "Nexus/external/imgui"
 IncludeDir["glm"] = "Nexus/external/glm"
+IncludeDir["stb_image"] = "Nexus/external/stb_image"
 
 include "Nexus/external/glfw"
 include "Nexus/external/glad"
@@ -35,6 +36,8 @@ project "Nexus"
 	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/external/stb_image/**.cpp",
+		"%{prj.name}/external/stb_image/**.h",
 		"%{prj.name}/external/glm/glm/**.hpp",
 		"%{prj.name}/external/glm/glm/**.inl"
 	}
@@ -46,7 +49,9 @@ project "Nexus"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.Imgui}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.stb_image}"
+
 	}
 
 	links

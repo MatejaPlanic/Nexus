@@ -10,6 +10,7 @@
 
 #include "Nexus/Renderer/Renderer.h"
 
+#include <glfw/glfw3.h>
 
 namespace Nexus
 {
@@ -23,6 +24,8 @@ namespace Nexus
 
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
+
+		Renderer::Init();
 
 		m_ImGuiLayer = new ImGuiLayer();
 
@@ -63,8 +66,13 @@ namespace Nexus
 	{
 		while (m_Running)
 		{
+			float time = (float)glfwGetTime();
+			Timestep timestep = time - m_LastFrameTime;
+
+			m_LastFrameTime = time;
+
 			for (Layer* layer : m_LayerStack)
-				layer->OnUpdate();
+				layer->OnUpdate(timestep);
 			
 			m_ImGuiLayer->Begin();
 			
