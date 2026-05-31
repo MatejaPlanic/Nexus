@@ -16,9 +16,10 @@
 
 #include "Nexus/Renderer/Buffer.h"
 #include "Nexus/Renderer/Shader.h"
+#include "Nexus/Renderer/Texture.h"
 #include "Nexus/Renderer/VertexArray.h"
 
 #include "Nexus/Renderer/OrthographicCamera.h"
 
-
+#include "Nexus/Core/TimeStep.h"
 
