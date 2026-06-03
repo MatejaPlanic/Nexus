@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "Nexus/Core.h"
+#include "Nexus/Core/Core.h"
 
 namespace Nexus {
 	class Texture

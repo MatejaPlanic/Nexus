@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Nexus/Input.h"
+#include "Nexus/Core/Input.h"
 
 namespace Nexus {
 	

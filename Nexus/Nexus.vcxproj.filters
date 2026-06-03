@@ -1317,17 +1317,38 @@
     <ClInclude Include="src\Nexus.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Nexus\Application.h">
-      <Filter>src\Nexus</Filter>
+    <ClInclude Include="src\Nexus\Core\Application.h">
+      <Filter>src\Nexus\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Nexus\Core.h">
-      <Filter>src\Nexus</Filter>
+    <ClInclude Include="src\Nexus\Core\Core.h">
+      <Filter>src\Nexus\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nexus\Core\EntryPoint.h">
+      <Filter>src\Nexus\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nexus\Core\Input.h">
+      <Filter>src\Nexus\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nexus\Core\KeyCodes.h">
+      <Filter>src\Nexus\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nexus\Core\Layer.h">
+      <Filter>src\Nexus\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nexus\Core\LayerStack.h">
+      <Filter>src\Nexus\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nexus\Core\Log.h">
+      <Filter>src\Nexus\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nexus\Core\MouseButtonCodes.h">
+      <Filter>src\Nexus\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Nexus\Core\TimeStep.h">
       <Filter>src\Nexus\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Nexus\EntryPoint.h">
-      <Filter>src\Nexus</Filter>
+    <ClInclude Include="src\Nexus\Core\Window.h">
+      <Filter>src\Nexus\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Nexus\Events\ApplicationEvent.h">
       <Filter>src\Nexus\Events</Filter>
@@ -1344,24 +1365,6 @@
     <ClInclude Include="src\Nexus\Imgui\ImGuiLayer.h">
       <Filter>src\Nexus\Imgui</Filter>
     </ClInclude>
-    <ClInclude Include="src\Nexus\Input.h">
-      <Filter>src\Nexus</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Nexus\KeyCodes.h">
-      <Filter>src\Nexus</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Nexus\Layer.h">
-      <Filter>src\Nexus</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Nexus\LayerStack.h">
-      <Filter>src\Nexus</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Nexus\Log.h">
-      <Filter>src\Nexus</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Nexus\MouseButtonCodes.h">
-      <Filter>src\Nexus</Filter>
-    </ClInclude>
     <ClInclude Include="src\Nexus\Renderer\Buffer.h">
       <Filter>src\Nexus\Renderer</Filter>
     </ClInclude>
@@ -1369,6 +1372,9 @@
       <Filter>src\Nexus\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Nexus\Renderer\OrthographicCamera.h">
+      <Filter>src\Nexus\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nexus\Renderer\OrthographicCameraController.h">
       <Filter>src\Nexus\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Nexus\Renderer\RenderCommand.h">
@@ -1388,9 +1394,6 @@
     </ClInclude>
     <ClInclude Include="src\Nexus\Renderer\VertexArray.h">
       <Filter>src\Nexus\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Nexus\Window.h">
-      <Filter>src\Nexus</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
       <Filter>src\Platform\OpenGL</Filter>
@@ -1419,13 +1422,23 @@
     <ClInclude Include="src\nxpch.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\Nexus\Renderer\Renderer2D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="external\stb_image\stb_image.cpp">
       <Filter>external\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Nexus\Application.cpp">
-      <Filter>src\Nexus</Filter>
+    <ClCompile Include="src\Nexus\Core\Application.cpp">
+      <Filter>src\Nexus\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nexus\Core\Layer.cpp">
+      <Filter>src\Nexus\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nexus\Core\LayerStack.cpp">
+      <Filter>src\Nexus\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nexus\Core\Log.cpp">
+      <Filter>src\Nexus\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Nexus\Imgui\ImGuiBuild.cpp">
       <Filter>src\Nexus\Imgui</Filter>
@@ -1433,19 +1446,13 @@
     <ClCompile Include="src\Nexus\Imgui\ImGuiLayer.cpp">
       <Filter>src\Nexus\Imgui</Filter>
     </ClCompile>
-    <ClCompile Include="src\Nexus\Layer.cpp">
-      <Filter>src\Nexus</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Nexus\LayerStack.cpp">
-      <Filter>src\Nexus</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Nexus\Log.cpp">
-      <Filter>src\Nexus</Filter>
-    </ClCompile>
     <ClCompile Include="src\Nexus\Renderer\Buffer.cpp">
       <Filter>src\Nexus\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Nexus\Renderer\OrthographicCamera.cpp">
+      <Filter>src\Nexus\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nexus\Renderer\OrthographicCameraController.cpp">
       <Filter>src\Nexus\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Nexus\Renderer\RenderCommand.cpp">
@@ -1493,5 +1500,6 @@
     <ClCompile Include="src\nxpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Nexus\Renderer\Renderer2D.cpp" />
   </ItemGroup>
 </Project>

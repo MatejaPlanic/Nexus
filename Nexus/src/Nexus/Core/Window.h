@@ -3,7 +3,7 @@
 #include "nxpch.h"
 
 #include "Nexus/Events/Event.h"
-#include "Nexus/Core.h"
+#include "Nexus/Core/Core.h"
 
 namespace Nexus {
 	struct WindowProps
