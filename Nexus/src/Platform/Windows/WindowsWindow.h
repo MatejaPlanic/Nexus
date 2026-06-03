@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Nexus/Window.h"
+#include "Nexus/Core/Window.h"
 
 #include <GLFW/glfw3.h>
 

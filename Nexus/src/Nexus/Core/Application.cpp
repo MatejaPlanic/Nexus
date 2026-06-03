@@ -2,7 +2,7 @@
 #include "Application.h"
 
 #include "Nexus/Events/ApplicationEvent.h"
-#include "Nexus/Log.h"
+#include "Nexus/Core/Log.h"
 
 #include "Input.h"
 
@@ -51,6 +51,8 @@ namespace Nexus
 	{
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
+		dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FN(OnWindowResize));
+
 
 		NX_CORE_INFO("{0}", e.ToString());
 
@@ -71,14 +73,15 @@ namespace Nexus
 
 			m_LastFrameTime = time;
 
-			for (Layer* layer : m_LayerStack)
-				layer->OnUpdate(timestep);
-			
+			if (!m_Minimized)
+			{
+				for (Layer* layer : m_LayerStack)
+					layer->OnUpdate(timestep);
+			}
+
 			m_ImGuiLayer->Begin();
-			
 			for (Layer* layer : m_LayerStack)
 				layer->OnImGuiRender();
-			
 			m_ImGuiLayer->End();
 
 			m_Window->OnUpdate();
@@ -89,5 +92,18 @@ namespace Nexus
 	{
 		m_Running = false;
 		return true;
+	}
+	bool Application::OnWindowResize(WindowResizeEvent& e)
+	{
+		if (e.GetHeight() == 0 || e.GetWidth() == 0)
+		{
+			m_Minimized = true;
+			return false;
+		}
+
+		m_Minimized = false;
+		Renderer::OnWindowResize(e.GetWidth(), e.GetHeight());
+
+		return false;
 	}
 }

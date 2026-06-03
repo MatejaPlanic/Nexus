@@ -8,7 +8,7 @@
 
 #include "GLFW/glfw3.h"
 
-#include "Nexus/Application.h"
+#include "Nexus/Core/Application.h"
 
 namespace Nexus {
 

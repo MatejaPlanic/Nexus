@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Nexus/Core.h"
+#include "Nexus/Core/Core.h"
 #include "Nexus/Events/Event.h"
 
 #include "Nexus/Core/TimeStep.h"

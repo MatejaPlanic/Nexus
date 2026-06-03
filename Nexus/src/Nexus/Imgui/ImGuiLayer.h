@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Nexus/Layer.h"
+#include "Nexus/Core/Layer.h"
 #include <Nexus/Events/KeyEvent.h>
 #include <Nexus/Events/MouseEvent.h>
 #include <Nexus/Events/ApplicationEvent.h>
