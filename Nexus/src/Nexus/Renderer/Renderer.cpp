@@ -9,6 +9,8 @@ namespace Nexus
 
 	void Renderer::Init()
 	{
+		NX_PROFILE_FUNCTION();
+
 		RenderCommand::Init();
 		Renderer2D::Init();
 	}

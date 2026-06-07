@@ -14,6 +14,8 @@ namespace Nexus {
 
 	void Nexus::OrthographicCameraController::OnUpdate(Timestep ts)
 	{
+		NX_PROFILE_FUNCTION();
+
 		if (Input::IsKeyPressed(NX_KEY_A))
 		{
 			m_CameraPosition.x -= m_CameraTranslationSpeed * ts;
@@ -55,6 +57,8 @@ namespace Nexus {
 
 	void Nexus::OrthographicCameraController::OnEvent(Event& e)
 	{
+		NX_PROFILE_FUNCTION();
+
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<MouseScrolledEvent>(NX_BIND_EVENT_FN(OrthographicCameraController::OnMouseScrolled));
 		dispatcher.Dispatch<WindowResizeEvent>(NX_BIND_EVENT_FN(OrthographicCameraController::OnWindowResized));
@@ -62,6 +66,8 @@ namespace Nexus {
 
 	bool Nexus::OrthographicCameraController::OnMouseScrolled(MouseScrolledEvent& e)
 	{
+		NX_PROFILE_FUNCTION();
+
 		m_ZoomLevel -= e.GetYOffset() * 0.25f;
 		m_ZoomLevel = std::max(m_ZoomLevel, 0.25f);
 		m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
@@ -70,6 +76,8 @@ namespace Nexus {
 
 	bool Nexus::OrthographicCameraController::OnWindowResized(WindowResizeEvent& e)
 	{
+		NX_PROFILE_FUNCTION();
+
 		m_AspectRatio = (float)e.GetWidth() / (float)e.GetHeight();
 		m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
 		return false;

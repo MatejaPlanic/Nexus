@@ -1423,6 +1423,7 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\Nexus\Renderer\Renderer2D.h" />
+    <ClInclude Include="src\Nexus\Debug\Instrumentor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="external\stb_image\stb_image.cpp">

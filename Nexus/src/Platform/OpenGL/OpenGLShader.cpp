@@ -21,6 +21,8 @@ namespace Nexus {
 
 	OpenGLShader::OpenGLShader(const std::string& filePath)
 	{
+		NX_PROFILE_FUNCTION();
+
 		std::string source = ReadFile(filePath);
 		auto shaderSources = PreProcess(source);
 		Compile(shaderSources);
@@ -38,6 +40,8 @@ namespace Nexus {
 	Nexus::OpenGLShader::OpenGLShader(const std::string& name, const std::string& vertexSrc, const std::string& fragmentSrc)
 		: m_Name(name)
 	{
+		NX_PROFILE_FUNCTION();
+
 		std::unordered_map<GLenum, std::string> shaderSources;
 		shaderSources[GL_VERTEX_SHADER] = vertexSrc;
 		shaderSources[GL_FRAGMENT_SHADER] = fragmentSrc;
@@ -46,11 +50,15 @@ namespace Nexus {
 
 	Nexus::OpenGLShader::~OpenGLShader()
 	{
+		NX_PROFILE_FUNCTION();
+
 		glDeleteProgram(m_RendererID);
 	}
 
 	std::string OpenGLShader::ReadFile(const std::string& filePath)
 	{
+		NX_PROFILE_FUNCTION();
+
 		std::string result;
 		std::ifstream in(filePath, std::ios::in | std::ios::binary);
 		if (in)
@@ -71,6 +79,8 @@ namespace Nexus {
 
 	std::unordered_map<GLenum, std::string> OpenGLShader::PreProcess(const std::string& source)
 	{
+		NX_PROFILE_FUNCTION();
+
 		std::unordered_map<GLenum, std::string> shaderSources;
 
 		const char* typeToken = "#type";
@@ -101,6 +111,8 @@ namespace Nexus {
 
 	void OpenGLShader::Compile(const std::unordered_map<GLenum, std::string>& shaderSources)
 	{
+		NX_PROFILE_FUNCTION();
+
 		GLuint program = glCreateProgram();
 		if (shaderSources.size() > 2)
 		{
@@ -177,11 +189,15 @@ namespace Nexus {
 
 	void Nexus::OpenGLShader::Bind() const
 	{
+		NX_PROFILE_FUNCTION();
+
 		glUseProgram(m_RendererID);
 	}
 
 	void Nexus::OpenGLShader::Unbind() const
 	{
+		NX_PROFILE_FUNCTION();
+
 		glUseProgram(0);
 	}
 
@@ -193,6 +209,11 @@ namespace Nexus {
 	void OpenGLShader::SetFloat4(const std::string& name, const glm::vec4& value)
 	{
 		UploadUniformFloat4(name, value);
+	}
+
+	void OpenGLShader::SetFloat(const std::string& name, const float value)
+	{
+		UploadUniformFloat(name, value);
 	}
 
 	void OpenGLShader::SetFloat3(const std::string& name, const glm::vec3& value)
