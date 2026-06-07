@@ -15,6 +15,8 @@
 
 #include "Nexus/Core/Log.h"
 
+#include "Nexus/Debug/Instrumentor.h"
+
 #ifdef NX_PLATFORM_WINDOWS
 	#include <Windows.h>
 #endif

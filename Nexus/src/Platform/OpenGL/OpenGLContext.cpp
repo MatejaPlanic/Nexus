@@ -12,12 +12,16 @@ namespace Nexus {
 
 	void OpenGLContext::Init()
 	{
+		NX_PROFILE_FUNCTION();
+
 		glfwMakeContextCurrent(m_Window);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 	}
 
 	void OpenGLContext::SwapBuffers()
 	{
+		NX_PROFILE_FUNCTION();
+
 		glfwSwapBuffers(m_Window);
 	}
 

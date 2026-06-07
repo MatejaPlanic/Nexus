@@ -596,6 +596,7 @@ IF EXIST ..\bin\Dist-windows-x86_64\Nexus\Nexus.dll\ (xcopy /Q /E /Y /I ..\bin\D
     <ClInclude Include="src\Nexus\Core\MouseButtonCodes.h" />
     <ClInclude Include="src\Nexus\Core\TimeStep.h" />
     <ClInclude Include="src\Nexus\Core\Window.h" />
+    <ClInclude Include="src\Nexus\Debug\Instrumentor.h" />
     <ClInclude Include="src\Nexus\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Nexus\Events\Event.h" />
     <ClInclude Include="src\Nexus\Events\KeyEvent.h" />
