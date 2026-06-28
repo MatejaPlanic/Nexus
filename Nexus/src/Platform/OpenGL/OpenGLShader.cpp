@@ -104,8 +104,15 @@ namespace Nexus {
 			}
 			size_t nextLinePos = source.find_first_not_of("\r\n", eol);
 			pos = source.find(typeToken, nextLinePos);
+			
 			shaderSources[ShaderTypeFromString(type)] = source.substr(nextLinePos, pos - (nextLinePos == std::string::npos ? source.size() - 1 : nextLinePos));
+			NX_CORE_INFO("Parsed shader type: {0}, length: {1}", type,
+				shaderSources[ShaderTypeFromString(type)].size());
 		}
+
+		NX_CORE_INFO("Vertex shader source:\n{0}", shaderSources[GL_VERTEX_SHADER]);
+		NX_CORE_INFO("Fragment shader source:\n{0}", shaderSources[GL_FRAGMENT_SHADER]);
+
 		return shaderSources;
 	}
 
