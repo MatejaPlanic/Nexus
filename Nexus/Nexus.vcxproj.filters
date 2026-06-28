@@ -34,6 +34,9 @@
     <Filter Include="src\Nexus\Core">
       <UniqueIdentifier>{C73BF999-B309-ED9F-9C9D-5DC6880AC904}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Nexus\Debug">
+      <UniqueIdentifier>{C50F2DD9-319B-9A9D-3AAC-1D92A6B6F69D}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Nexus\Events">
       <UniqueIdentifier>{135B5902-FF53-7854-2886-5DD914DE5760}</UniqueIdentifier>
     </Filter>
@@ -1350,6 +1353,9 @@
     <ClInclude Include="src\Nexus\Core\Window.h">
       <Filter>src\Nexus\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Nexus\Debug\Instrumentor.h">
+      <Filter>src\Nexus\Debug</Filter>
+    </ClInclude>
     <ClInclude Include="src\Nexus\Events\ApplicationEvent.h">
       <Filter>src\Nexus\Events</Filter>
     </ClInclude>
@@ -1381,6 +1387,9 @@
       <Filter>src\Nexus\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Nexus\Renderer\Renderer.h">
+      <Filter>src\Nexus\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nexus\Renderer\Renderer2D.h">
       <Filter>src\Nexus\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Nexus\Renderer\RendererAPI.h">
@@ -1422,8 +1431,6 @@
     <ClInclude Include="src\nxpch.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Nexus\Renderer\Renderer2D.h" />
-    <ClInclude Include="src\Nexus\Debug\Instrumentor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="external\stb_image\stb_image.cpp">
@@ -1460,6 +1467,9 @@
       <Filter>src\Nexus\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Nexus\Renderer\Renderer.cpp">
+      <Filter>src\Nexus\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nexus\Renderer\Renderer2D.cpp">
       <Filter>src\Nexus\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Nexus\Renderer\RendererAPI.cpp">
@@ -1501,6 +1511,5 @@
     <ClCompile Include="src\nxpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Nexus\Renderer\Renderer2D.cpp" />
   </ItemGroup>
 </Project>

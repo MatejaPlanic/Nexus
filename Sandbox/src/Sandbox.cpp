@@ -1,7 +1,7 @@
 #include "Nexus.h"
 #include "Nexus/Core/EntryPoint.h"
 
-#include "GameLayer.h"
+#include "Sandbox2D.h"
 
 class Sandbox : public Nexus::Application
 {
@@ -9,8 +9,8 @@ public:
 	Sandbox()
 	{
 		// PushLayer(new ExampleLayer());
-		//PushLayer(new Sandbox2D());
-		PushLayer(new GameLayer());
+		PushLayer(new Sandbox2D());
+		//PushLayer(new GameLayer());
 	}
 	~Sandbox()
 	{

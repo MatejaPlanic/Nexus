@@ -7,7 +7,7 @@
 
 namespace Nexus
 {
-	VertexBuffer* VertexBuffer::Create(float* vertices, uint32_t size)
+	Ref<VertexBuffer> VertexBuffer::Create(uint32_t size)
 	{
 		switch (Renderer::GetAPI())
 		{
@@ -15,7 +15,22 @@ namespace Nexus
 			NX_CORE_INFO("RendererAPI::None is currently not supported!");
 			return nullptr;
 		case RendererAPI::API::OpenGL:
-			return new OpenGLVertexBuffer(vertices, size);
+			return std::make_shared<OpenGLVertexBuffer>(size);
+		}
+
+		NX_CORE_ERROR("Unknown RendererAPI!");
+
+		return nullptr;
+	}
+	Ref<VertexBuffer> VertexBuffer::Create(float* vertices, uint32_t size)
+	{
+		switch (Renderer::GetAPI())
+		{
+		case RendererAPI::API::None:
+			NX_CORE_INFO("RendererAPI::None is currently not supported!");
+			return nullptr;
+		case RendererAPI::API::OpenGL:
+			return std::make_shared<OpenGLVertexBuffer>(vertices, size);
 		}
 
 		NX_CORE_ERROR("Unknown RendererAPI!");
@@ -23,7 +38,7 @@ namespace Nexus
 		return nullptr;
 	}
 
-	IndexBuffer* IndexBuffer::Create(uint32_t* vertices, uint32_t size)
+	Ref<IndexBuffer> IndexBuffer::Create(uint32_t* vertices, uint32_t size)
 	{
 		switch (Renderer::GetAPI())
 		{
@@ -31,7 +46,7 @@ namespace Nexus
 			NX_CORE_INFO("RendererAPI::None is currently not supported!");
 			return nullptr;
 		case RendererAPI::API::OpenGL:
-			return new OpenGLIndexBuffer(vertices, size);
+			return std::make_shared<OpenGLIndexBuffer>(vertices, size);
 		}
 
 		NX_CORE_ERROR("Unknown RendererAPI!");
