@@ -22,6 +22,12 @@ private:
 	Nexus::Ref<Nexus::Shader> m_FlatColorShader;
 
 	Nexus::Ref<Nexus::Texture2D> m_CheckerboardTexture;
+	Nexus::Ref<Nexus::Texture2D> m_SpriteSheet;
+	Nexus::Ref<Nexus::SubTexture2D> m_TextureStairs,m_TextureBarrel,m_TextureTree;
 
 	glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f };
+
+	std::unordered_map<char, Nexus::Ref<Nexus::SubTexture2D>> s_TextureMap;
+
+	uint32_t m_MapWidth, m_MapHeight;
 };

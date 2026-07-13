@@ -1431,6 +1431,7 @@
     <ClInclude Include="src\nxpch.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\Nexus\Renderer\SubTexture2D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="external\stb_image\stb_image.cpp">
@@ -1511,5 +1512,6 @@
     <ClCompile Include="src\nxpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Nexus\Renderer\SubTexture2D.cpp" />
   </ItemGroup>
 </Project>

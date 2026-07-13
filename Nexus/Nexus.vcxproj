@@ -611,6 +611,7 @@ IF EXIST ..\bin\Dist-windows-x86_64\Nexus\Nexus.dll\ (xcopy /Q /E /Y /I ..\bin\D
     <ClInclude Include="src\Nexus\Renderer\Renderer2D.h" />
     <ClInclude Include="src\Nexus\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Nexus\Renderer\Shader.h" />
+    <ClInclude Include="src\Nexus\Renderer\SubTexture2D.h" />
     <ClInclude Include="src\Nexus\Renderer\Texture.h" />
     <ClInclude Include="src\Nexus\Renderer\VertexArray.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
@@ -639,6 +640,7 @@ IF EXIST ..\bin\Dist-windows-x86_64\Nexus\Nexus.dll\ (xcopy /Q /E /Y /I ..\bin\D
     <ClCompile Include="src\Nexus\Renderer\Renderer2D.cpp" />
     <ClCompile Include="src\Nexus\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Nexus\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Nexus\Renderer\SubTexture2D.cpp" />
     <ClCompile Include="src\Nexus\Renderer\Texture.cpp" />
     <ClCompile Include="src\Nexus\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
