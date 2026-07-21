@@ -1374,6 +1374,9 @@
     <ClInclude Include="src\Nexus\Renderer\Buffer.h">
       <Filter>src\Nexus\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Nexus\Renderer\FrameBuffer.h">
+      <Filter>src\Nexus\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Nexus\Renderer\GraphicsContext.h">
       <Filter>src\Nexus\Renderer</Filter>
     </ClInclude>
@@ -1398,6 +1401,9 @@
     <ClInclude Include="src\Nexus\Renderer\Shader.h">
       <Filter>src\Nexus\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Nexus\Renderer\SubTexture2D.h">
+      <Filter>src\Nexus\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Nexus\Renderer\Texture.h">
       <Filter>src\Nexus\Renderer</Filter>
     </ClInclude>
@@ -1408,6 +1414,9 @@
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLFrameBuffer.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h">
@@ -1431,7 +1440,6 @@
     <ClInclude Include="src\nxpch.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Nexus\Renderer\SubTexture2D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="external\stb_image\stb_image.cpp">
@@ -1458,6 +1466,9 @@
     <ClCompile Include="src\Nexus\Renderer\Buffer.cpp">
       <Filter>src\Nexus\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Nexus\Renderer\FrameBuffer.cpp">
+      <Filter>src\Nexus\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Nexus\Renderer\OrthographicCamera.cpp">
       <Filter>src\Nexus\Renderer</Filter>
     </ClCompile>
@@ -1479,6 +1490,9 @@
     <ClCompile Include="src\Nexus\Renderer\Shader.cpp">
       <Filter>src\Nexus\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Nexus\Renderer\SubTexture2D.cpp">
+      <Filter>src\Nexus\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Nexus\Renderer\Texture.cpp">
       <Filter>src\Nexus\Renderer</Filter>
     </ClCompile>
@@ -1489,6 +1503,9 @@
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLFrameBuffer.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp">
@@ -1512,6 +1529,5 @@
     <ClCompile Include="src\nxpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Nexus\Renderer\SubTexture2D.cpp" />
   </ItemGroup>
 </Project>

@@ -5,7 +5,7 @@
 
 namespace Nexus {
 
-	class NEXUS_API VertexArray
+	class VertexArray
 	{
 	public:
 		virtual ~VertexArray() {}

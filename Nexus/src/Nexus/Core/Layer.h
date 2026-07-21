@@ -6,7 +6,7 @@
 #include "Nexus/Core/TimeStep.h"
 
 namespace Nexus {
-	class NEXUS_API Layer
+	class Layer
 	{
 	public:
 		Layer(const std::string& name = "Layer");

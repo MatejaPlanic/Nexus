@@ -25,6 +25,8 @@ private:
 	Nexus::Ref<Nexus::Texture2D> m_SpriteSheet;
 	Nexus::Ref<Nexus::SubTexture2D> m_TextureStairs,m_TextureBarrel,m_TextureTree;
 
+	Nexus::Ref<Nexus::FrameBuffer> m_FrameBuffer;
+
 	glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f };
 
 	std::unordered_map<char, Nexus::Ref<Nexus::SubTexture2D>> s_TextureMap;

@@ -3,7 +3,7 @@
 #include "RendererAPI.h"
 
 namespace Nexus {
-	class NEXUS_API RenderCommand
+	class RenderCommand
 	{
 	public:
 		inline static void Init()

@@ -8,7 +8,7 @@ typedef unsigned int GLenum;
 
 namespace Nexus
 {
-	class NEXUS_API OpenGLShader : public Shader
+	class OpenGLShader : public Shader
 	{
 	public:
 		OpenGLShader(const std::string& filePath);

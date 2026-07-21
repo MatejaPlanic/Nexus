@@ -19,6 +19,7 @@
 #include "Nexus/Renderer/Texture.h"
 #include "Nexus/Renderer/SubTexture2D.h"
 #include "Nexus/Renderer/VertexArray.h"
+#include "Nexus/Renderer/FrameBuffer.h"
 
 #include "Nexus/Renderer/OrthographicCamera.h"
 #include "Nexus/Renderer/OrthographicCameraController.h"

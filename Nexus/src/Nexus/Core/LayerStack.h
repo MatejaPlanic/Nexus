@@ -6,7 +6,7 @@
 #include <vector>
 
 namespace Nexus {
-	class NEXUS_API LayerStack
+	class LayerStack
 	{
 	public:
 		LayerStack();
