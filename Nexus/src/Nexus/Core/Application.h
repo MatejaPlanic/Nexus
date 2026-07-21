@@ -12,10 +12,10 @@
 
 namespace Nexus
 {
-	class NEXUS_API Application
+	class Application
 	{
 	public:
-		Application();
+		Application(const std::string& name = "Nexus App");
 		virtual ~Application();
 
 		void Run();
@@ -29,6 +29,8 @@ namespace Nexus
 		inline Window& GetWindow() { return *m_Window; }
 
 		void Close();
+
+		ImGuiLayer* GetImGuiLayer() { return m_ImGuiLayer; }
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 		bool OnWindowResize(WindowResizeEvent& e);

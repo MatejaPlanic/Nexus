@@ -7,7 +7,7 @@
 
 namespace Nexus
 {
-	class NEXUS_API Shader
+	class Shader
 	{
 	public:
 		virtual ~Shader() = default;
@@ -28,7 +28,7 @@ namespace Nexus
 		static Ref<Shader> Create(const std::string& name, const std::string& vertexSrc, const std::string& fragmentSrc);
 	};
 
-	class NEXUS_API ShaderLibrary
+	class ShaderLibrary
 	{
 	public:
 		void Add(const Ref<Shader>& shader);

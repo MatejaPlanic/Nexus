@@ -6,7 +6,7 @@
 #include "Shader.h"
 
 namespace Nexus {
-	class NEXUS_API Renderer
+	class Renderer
 	{
 	public:
 		static void Init();

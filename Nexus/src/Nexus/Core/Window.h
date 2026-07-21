@@ -18,7 +18,7 @@ namespace Nexus {
 			: Title(title), Width(width), Height(height) {}
 	};
 
-	class NEXUS_API Window 
+	class Window 
 	{
 	public:
 		using EventCallbackFn = std::function<void(Event&)>;

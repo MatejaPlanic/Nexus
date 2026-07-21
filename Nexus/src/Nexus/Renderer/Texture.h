@@ -23,7 +23,7 @@ namespace Nexus {
 
 	};
 
-	class NEXUS_API Texture2D : public Texture
+	class Texture2D : public Texture
 	{
 	public:
 		static Ref<Texture2D> Create(const std::string& path);

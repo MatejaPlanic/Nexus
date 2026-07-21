@@ -4,7 +4,7 @@
 
 namespace Nexus {
 
-	class NEXUS_API MouseMovedEvent : public Event
+	class MouseMovedEvent : public Event
 	{
 	public:
 		MouseMovedEvent(float x, float y) : m_MouseX(x), m_MouseY(y) {}
@@ -26,7 +26,7 @@ namespace Nexus {
 		float m_MouseX, m_MouseY;
 	};
 
-	class NEXUS_API MouseScrolledEvent : public Event
+	class MouseScrolledEvent : public Event
 	{
 	public:
 		MouseScrolledEvent(float xOffset, float yOffset) : m_XOffset(xOffset), m_YOffset(yOffset) {}
@@ -48,7 +48,7 @@ namespace Nexus {
 		float m_XOffset, m_YOffset;
 	};
 
-	class NEXUS_API MouseButtonEvent : public Event
+	class MouseButtonEvent : public Event
 	{
 	public:
 		int GetMouseButton() const { return m_Button; }
@@ -60,7 +60,7 @@ namespace Nexus {
 		int m_Button;
 	};
 
-	class NEXUS_API MouseButtonPressedEvent : public MouseButtonEvent
+	class MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonPressedEvent(int button) : MouseButtonEvent(button) {}
@@ -75,7 +75,7 @@ namespace Nexus {
 		EVENT_CLASS_TYPE(MouseButtonPressed)
 	};
 
-	class NEXUS_API MouseButtonReleasedEvent : public MouseButtonEvent
+	class MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonReleasedEvent(int button) : MouseButtonEvent(button) {}

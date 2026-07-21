@@ -23,7 +23,7 @@ include "Nexus/external/imgui"
 
 project "Nexus"
 	location "Nexus"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
@@ -69,14 +69,7 @@ project "Nexus"
 		defines
 		{
 			"NX_PLATFORM_WINDOWS",
-			"NX_BUILD_DLL",
 			"GLFW_INCLUDE_NONE"
-		}
-
-		postbuildcommands
-		{
-			("{MKDIR} ../bin/" .. outputdir .. "/Sandbox"),
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
 		}
 
 	filter "configurations:Debug"
@@ -99,6 +92,61 @@ project "Nexus"
 
 project "Sandbox"
 	location "Sandbox"
+	kind "ConsoleApp"
+	language "C++"
+
+	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	files
+	{
+		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.cpp"
+	}
+
+	includedirs
+	{
+		"Nexus/external/spdlog/include",
+		"Nexus/src",
+		"%{IncludeDir.glm}",
+		"Nexus/external"
+	}
+
+	links
+	{
+		"Nexus"
+	}
+
+	filter "system:windows"
+		cppdialect "C++23"
+		staticruntime "On"
+		systemversion "latest"
+
+		defines
+		{
+			"NX_PLATFORM_WINDOWS",
+		}
+
+	filter "configurations:Debug"
+		defines "NX_DEBUG"
+		buildoptions "/MDd"
+		symbols "On"
+
+	filter "configurations:Release"
+		defines "NX_RELEASE"
+		buildoptions "/MD"
+		optimize "On"
+
+	filter "configurations:Dist"
+		defines "NX_DIST"
+		buildoptions "/MD"
+		optimize "On"
+
+	filter "system:windows"
+    	buildoptions { "/utf-8" }
+
+project "Nexus-Editor"
+	location "Nexus-Editor"
 	kind "ConsoleApp"
 	language "C++"
 
