@@ -175,55 +175,10 @@ namespace Nexus {
 	{
 		NX_PROFILE_FUNCTION();
 
-		if (s_Data->QuadIndexCount >= Renderer2DStorage::MaxIndices)
-		{
-			StartNewBatch();
-		}
-
-		const float textureIndex = 0.0f; // White Texture
-
 		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)
 			* glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
 
-		s_Data->QuadVertexBufferPtr->Position = transform * s_Data->QuadVertexPositions[0];
-		s_Data->QuadVertexBufferPtr->Color = color;
-		s_Data->QuadVertexBufferPtr->TexCoord = { 0.0f, 0.0f };
-		s_Data->QuadVertexBufferPtr->TextIndex = textureIndex;
-		s_Data->QuadVertexBufferPtr++;
-
-		s_Data->QuadVertexBufferPtr->Position = transform * s_Data->QuadVertexPositions[1];
-		s_Data->QuadVertexBufferPtr->Color = color;
-		s_Data->QuadVertexBufferPtr->TexCoord = { 1.0f, 0.0f };
-		s_Data->QuadVertexBufferPtr->TextIndex = textureIndex;
-		s_Data->QuadVertexBufferPtr++;
-
-		s_Data->QuadVertexBufferPtr->Position = transform * s_Data->QuadVertexPositions[2];
-		s_Data->QuadVertexBufferPtr->Color = color;
-		s_Data->QuadVertexBufferPtr->TexCoord = { 1.0f, 1.0f };
-		s_Data->QuadVertexBufferPtr->TextIndex = textureIndex;
-		s_Data->QuadVertexBufferPtr++;
-
-		s_Data->QuadVertexBufferPtr->Position = transform * s_Data->QuadVertexPositions[3];
-		s_Data->QuadVertexBufferPtr->Color = color;
-		s_Data->QuadVertexBufferPtr->TexCoord = { 0.0f, 1.0f };
-		s_Data->QuadVertexBufferPtr->TextIndex = textureIndex;
-		s_Data->QuadVertexBufferPtr++;
-
-		s_Data->QuadIndexCount += 6;
-
-		s_Data->Stats.QuadCount++;
-
-		//s_Data->TextureShader->SetFloat4("u_Color", color);
-		//s_Data->TextureShader->SetFloat("u_TilingFactor", 1.0f);
-		//s_Data->WhiteTexture->Bind();
-
-		//glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)
-		//	* glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
-
-		//s_Data->TextureShader->SetMat4("u_Transform", transform);
-
-		//s_Data->VertexArray->Bind();
-		//RenderCommand::DrawIndexed(s_Data->VertexArray);
+		DrawQuad(transform, color);
 	}
 
 	void Renderer2D::DrawQuad(const glm::vec2& position, const glm::vec2& size, const Ref<Texture2D>& texture,float tilingFactor, const glm::vec4& tintColor)
@@ -318,14 +273,62 @@ namespace Nexus {
 	{
 		NX_PROFILE_FUNCTION();
 
+		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)
+			* glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
+
+		DrawQuad(transform, tintColor, texture, tilingFactor, tintColor);
+	}
+
+	void Renderer2D::DrawQuad(const glm::mat4 transform, const glm::vec4& color)
+	{
+		NX_PROFILE_FUNCTION();
+
+		if (s_Data->QuadIndexCount >= Renderer2DStorage::MaxIndices)
+		{
+			StartNewBatch();
+		}
+
+		const float textureIndex = 0.0f; 
+
+		s_Data->QuadVertexBufferPtr->Position = transform * s_Data->QuadVertexPositions[0];
+		s_Data->QuadVertexBufferPtr->Color = color;
+		s_Data->QuadVertexBufferPtr->TexCoord = { 0.0f, 0.0f };
+		s_Data->QuadVertexBufferPtr->TextIndex = textureIndex;
+		s_Data->QuadVertexBufferPtr++;
+
+		s_Data->QuadVertexBufferPtr->Position = transform * s_Data->QuadVertexPositions[1];
+		s_Data->QuadVertexBufferPtr->Color = color;
+		s_Data->QuadVertexBufferPtr->TexCoord = { 1.0f, 0.0f };
+		s_Data->QuadVertexBufferPtr->TextIndex = textureIndex;
+		s_Data->QuadVertexBufferPtr++;
+
+		s_Data->QuadVertexBufferPtr->Position = transform * s_Data->QuadVertexPositions[2];
+		s_Data->QuadVertexBufferPtr->Color = color;
+		s_Data->QuadVertexBufferPtr->TexCoord = { 1.0f, 1.0f };
+		s_Data->QuadVertexBufferPtr->TextIndex = textureIndex;
+		s_Data->QuadVertexBufferPtr++;
+
+		s_Data->QuadVertexBufferPtr->Position = transform * s_Data->QuadVertexPositions[3];
+		s_Data->QuadVertexBufferPtr->Color = color;
+		s_Data->QuadVertexBufferPtr->TexCoord = { 0.0f, 1.0f };
+		s_Data->QuadVertexBufferPtr->TextIndex = textureIndex;
+		s_Data->QuadVertexBufferPtr++;
+
+		s_Data->QuadIndexCount += 6;
+
+		s_Data->Stats.QuadCount++;
+	}
+
+	void Renderer2D::DrawQuad(const glm::mat4 transform, const glm::vec4& color, const Ref<SubTexture2D>& texture, float tilingFactor, const glm::vec4& tintColor)
+	{
+		NX_PROFILE_FUNCTION();
+
 		if (s_Data->QuadIndexCount >= Renderer2DStorage::MaxIndices)
 		{
 			StartNewBatch();
 		}
 
 		constexpr size_t quadVertexCount = 4;
-
-		constexpr glm::vec4 color = { 1.0f, 1.0f, 1.0f, 1.0f };
 
 		const glm::vec2* texCoords = texture->GetTexCoords();
 		const Ref<Texture2D>& tex = texture->GetTexture();
@@ -347,9 +350,6 @@ namespace Nexus {
 			s_Data->TextureSlots[s_Data->TextureSlotIndex] = tex;
 			s_Data->TextureSlotIndex++;
 		}
-
-		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position)
-			* glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
 
 		for (size_t i = 0; i < quadVertexCount; i++)
 		{

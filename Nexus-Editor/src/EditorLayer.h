@@ -37,5 +37,9 @@ namespace Nexus {
 		uint32_t m_MapWidth, m_MapHeight;
 
 		bool m_ViewportFocused = false, m_ViewportHovered = false;
+
+		Entity m_SquareEntity;
+
+		Ref<Scene> m_ActiveScene;
 	};
 }

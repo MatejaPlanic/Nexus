@@ -15,6 +15,7 @@ IncludeDir["GLFW"] = "Nexus/external/glfw/include"
 IncludeDir["Glad"] = "Nexus/external/glad/include"
 IncludeDir["Imgui"] = "Nexus/external/imgui"
 IncludeDir["glm"] = "Nexus/external/glm"
+IncludeDir["entt"] = "Nexus/external/entt/include"
 IncludeDir["stb_image"] = "Nexus/external/stb_image"
 
 include "Nexus/external/glfw"
@@ -50,8 +51,8 @@ project "Nexus"
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.Imgui}",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.stb_image}"
-
+		"%{IncludeDir.stb_image}",
+		"%{IncludeDir.entt}"
 	}
 
 	links
@@ -164,7 +165,8 @@ project "Nexus-Editor"
 		"Nexus/external/spdlog/include",
 		"Nexus/src",
 		"%{IncludeDir.glm}",
-		"Nexus/external"
+		"Nexus/external",
+		"%{IncludeDir.entt}"
 	}
 
 	links

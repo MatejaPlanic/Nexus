@@ -14,6 +14,10 @@
 #include "Nexus/Renderer/Renderer2D.h"
 #include "Nexus/Renderer/RenderCommand.h"
 
+#include "Nexus/Scene/Scene.h" 
+#include "Nexus/Scene/Components.h"
+#include "Nexus/Scene/Entity.h"
+
 #include "Nexus/Renderer/Buffer.h"
 #include "Nexus/Renderer/Shader.h"
 #include "Nexus/Renderer/Texture.h"
