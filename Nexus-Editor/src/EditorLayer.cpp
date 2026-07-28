@@ -6,24 +6,6 @@
 
 #include "Platform/OpenGL/OpenGLShader.h"
 
-static const uint32_t s_MapWidth = 24;
-static const char* s_MapTiles =
-"WWWWWWWWWWWWWWWWWWWWWWWW"
-"WWWWWWWDDDDWWWWWWWWWWWWW"
-"WWWWWWWWWWWDDDDWWWWWWWWW"
-"WWWWWDDDDDDDDDDDDDWWWWWW"
-"WWWWWDDDDDWWWWWWWWWWWWWW"
-"WWWWWWWWWWWDDDDDWWWWWWWW"
-"WWWWWWDDDDWWWWWWDDDDDDWW"
-"WWWWWWWDDDDDDDDDWWWWWWWW"
-"WWWDDDDDDDDWWWWWWWWWWWWW"
-"WWWWWWWWWDDDDDDDDWWWWWWW"
-"WWWWWWWDDDWWWWWWWWWWWWWW"
-"WWWWWWDDDDDDDDDDDWWWWWWW"
-"WWWWWWWDDDDDDDDWWWWWWWWW"
-"WWWWWWWWWWWWWWWWWWWWWWWW"
-;
-
 namespace Nexus {
 
 	EditorLayer::EditorLayer()
@@ -35,18 +17,6 @@ namespace Nexus {
 	void EditorLayer::OnAttach()
 	{
 		m_CheckerboardTexture = Texture2D::Create("assets/textures/Checkerboard.png");
-
-		m_SpriteSheet = Texture2D::Create("assets/game/textures/RPGpack_sheet_2X.png");
-
-		m_TextureStairs = SubTexture2D::CreateFromCoords(m_SpriteSheet, { 7, 6 }, { 128, 128 });
-		m_TextureTree = SubTexture2D::CreateFromCoords(m_SpriteSheet, { 2, 1 }, { 128, 128 }, { 1, 2 });
-
-		m_MapWidth = s_MapWidth;
-		m_MapHeight = strlen(s_MapTiles) / s_MapWidth;
-
-		s_TextureMap['D'] = SubTexture2D::CreateFromCoords(m_SpriteSheet, { 6, 11 }, { 128, 128 });
-		s_TextureMap['W'] = SubTexture2D::CreateFromCoords(m_SpriteSheet, { 11, 11 }, { 128, 128 });
-
 		FrameBufferSpecification fbSpec;
 		fbSpec.Width = 1280;
 		fbSpec.Height = 720;
@@ -59,6 +29,54 @@ namespace Nexus {
 		square.AddComponent<SpriteRendererComponent>(glm::vec4{0.0f,1.0f,0.0f,1.0f});
 
 		m_SquareEntity = square;
+
+		m_CameraEntity = m_ActiveScene->CreateEntity("Camera");
+		m_CameraEntity.AddComponent<CameraComponent>();
+
+		m_SecondCamera = m_ActiveScene->CreateEntity("Clip-Space Entity");
+		auto& cc = m_SecondCamera.AddComponent<CameraComponent>();
+		cc.Primary = false;
+
+		class CameraController : public ScriptableEntity
+		{
+		public:
+			void OnCreate()
+			{
+			}
+
+			void OnDestroy()
+			{
+
+			}
+
+			void OnUpdate(Timestep ts)
+			{
+				auto& transform = GetComponent<TransformComponent>().transform;
+				float speed = 5.0f;
+
+				if (Input::IsKeyPressed(NX_KEY_A))
+				{
+					transform[3][0] -= speed * ts;
+				}
+
+				else if (Input::IsKeyPressed(NX_KEY_D))
+				{
+					transform[3][0] += speed * ts;
+				}
+
+				if (Input::IsKeyPressed(NX_KEY_S))
+				{
+					transform[3][1] -= speed * ts;
+				}
+
+				else if (Input::IsKeyPressed(NX_KEY_W))
+				{
+					transform[3][1] += speed * ts;
+				}
+			}
+		};
+
+		m_SecondCamera.AddComponent<NativeScriptComponent>().Bind<CameraController>();
 	}
 
 	void EditorLayer::OnDetach()
@@ -69,67 +87,31 @@ namespace Nexus {
 	{
 		NX_PROFILE_FUNCTION();
 
+		// Resize
+		if (FrameBufferSpecification spec = m_FrameBuffer->GetSpecification();
+			m_ViewportSize.x > 0.0f && m_ViewportSize.y > 0.0f && // zero sized framebuffer is invalid
+			(spec.Width != m_ViewportSize.x || spec.Height != m_ViewportSize.y))
 		{
-			NX_PROFILE_SCOPE("CameraController::OnUpdate");
-			if(m_ViewportFocused)
-				m_CameraController.OnUpdate(ts);
+			m_FrameBuffer->Resize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
+			m_CameraController.ResizeBounds(m_ViewportSize.x, m_ViewportSize.y);
+
+			m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 		}
 
+		// Update
+		if (m_ViewportFocused)
+			m_CameraController.OnUpdate(ts);
 
+		// Render
 		Renderer2D::ResetStats();
+		m_FrameBuffer->Bind();
+		RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
+		RenderCommand::Clear();
 
-		{
-			NX_PROFILE_SCOPE("Renderer Prep");
-			m_FrameBuffer->Bind();
-			RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
-			RenderCommand::Clear();
-		}
+		// Update scene
+		m_ActiveScene->OnUpdate(ts);
 
-
-		{
-			NX_PROFILE_SCOPE("Renderer Draw");
-
-#if 1
-			Renderer2D::BeginScene(m_CameraController.GetCamera());
-
-			m_ActiveScene->OnUpdate(ts);
-
-			Renderer2D::EndScene();
-			
-			m_FrameBuffer->Unbind();
-
-#endif
-
-#if 0
-			Renderer2D::BeginScene(m_CameraController.GetCamera());
-
-			for (uint32_t i = 0; i < m_MapHeight; i++)
-			{
-				for (uint32_t j = 0; j < m_MapWidth; j++)
-				{
-					char tileType = s_MapTiles[j + i * m_MapWidth];
-					Ref<Nexus::SubTexture2D> texture;
-
-					if (s_TextureMap.find(tileType) != s_TextureMap.end())
-					{
-						texture = s_TextureMap[tileType];
-					}
-					else
-					{
-						texture = m_TextureStairs;
-					}
-
-					Renderer2D::DrawQuad({ i - m_MapWidth / 2.0f,j - m_MapHeight / 2.0f, 0.5f }, { 1.0f, 1.0f }, texture);
-				}
-			}
-
-			//Nexus::Renderer2D::DrawQuad({ 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f }, m_TextureStairs);
-			//Nexus::Renderer2D::DrawQuad({ 1.0f, 0.0f, 0.0f }, { 1.0f, 1.0f }, m_TextureBarrel);
-			//Nexus::Renderer2D::DrawQuad({ -1.0f, 0.0f, 0.0f }, { 1.0f, 2.0f }, m_TextureTree);
-
-			Renderer2D::EndScene();
-#endif
-		}
+		m_FrameBuffer->Unbind();
 	}
 
 	void EditorLayer::OnImGuiRender()
@@ -203,8 +185,32 @@ namespace Nexus {
 		ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
 		ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
 
-		auto& squareColor = m_SquareEntity.GetComponent<SpriteRendererComponent>().Color;
-		ImGui::ColorEdit4("Square Color", glm::value_ptr(squareColor));
+		if (m_SquareEntity)
+		{
+			ImGui::Separator();
+			auto& tag = m_SquareEntity.GetComponent<TagComponent>().Tag;
+			ImGui::Text("%s", tag.c_str());
+
+			auto& squareColor = m_SquareEntity.GetComponent<SpriteRendererComponent>().Color;
+			ImGui::ColorEdit4("Square Color", glm::value_ptr(squareColor));
+			ImGui::Separator();
+		}
+
+		ImGui::DragFloat3("Camera Transform",
+			glm::value_ptr(m_CameraEntity.GetComponent<TransformComponent>().transform[3]));
+
+		if (ImGui::Checkbox("Camera A", &m_PrimaryCamera))
+		{
+			m_CameraEntity.GetComponent<CameraComponent>().Primary = m_PrimaryCamera;
+			m_SecondCamera.GetComponent<CameraComponent>().Primary = !m_PrimaryCamera;
+		}
+
+		{
+			auto& camera = m_SecondCamera.GetComponent<CameraComponent>().Camera;
+			float orthoSize = camera.GetOrthographicSize();
+			if (ImGui::DragFloat("Second Camera Ortho Size", &orthoSize))
+				camera.SetOrthographicSize(orthoSize);
+		}
 
 		ImGui::End();
 
@@ -214,13 +220,7 @@ namespace Nexus {
 		m_ViewportHovered = ImGui::IsWindowHovered();
 		Application::Get().GetImGuiLayer()->SetBlockEvents(!m_ViewportFocused || !m_ViewportHovered);
 		ImVec2 size = ImGui::GetContentRegionAvail();
-		if (m_ViewportSize != *((glm::vec2*)&size))
-		{
-			m_FrameBuffer->Resize((uint32_t)size.x,(uint32_t)size.y);
-			m_ViewportSize = { size.x, size.y };
-
-			m_CameraController.ResizeBounds(m_ViewportSize.x, m_ViewportSize.y);
-		}
+		m_ViewportSize = { size.x, size.y };
 		uint32_t textureId = m_FrameBuffer->GetColorAttachmentRendererID();
 		ImGui::Image((void*)textureId, ImVec2{ m_ViewportSize.x , m_ViewportSize.y }, ImVec2{ 0,1 }, ImVec2{ 1,0 });
 		ImGui::End();

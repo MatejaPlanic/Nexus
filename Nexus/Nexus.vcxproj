@@ -573,6 +573,7 @@
     <ClInclude Include="external\glm\glm\vector_relational.hpp" />
     <ClInclude Include="external\stb_image\stb_image.h" />
     <ClInclude Include="src\Nexus.h" />
+    <ClInclude Include="src\Nexus\Renderer\Camera.h" />
     <ClInclude Include="src\Nexus\Core\Application.h" />
     <ClInclude Include="src\Nexus\Core\Core.h" />
     <ClInclude Include="src\Nexus\Core\EntryPoint.h" />
@@ -606,6 +607,8 @@
     <ClInclude Include="src\Nexus\Scene\Components.h" />
     <ClInclude Include="src\Nexus\Scene\Entity.h" />
     <ClInclude Include="src\Nexus\Scene\Scene.h" />
+    <ClInclude Include="src\Nexus\Scene\SceneCamera.h" />
+    <ClInclude Include="src\Nexus\Scene\ScriptableEntity.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLFrameBuffer.h" />
@@ -639,6 +642,7 @@
     <ClCompile Include="src\Nexus\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Nexus\Scene\Entity.cpp" />
     <ClCompile Include="src\Nexus\Scene\Scene.cpp" />
+    <ClCompile Include="src\Nexus\Scene\SceneCamera.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLFrameBuffer.cpp" />

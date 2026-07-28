@@ -38,8 +38,12 @@ namespace Nexus {
 
 		bool m_ViewportFocused = false, m_ViewportHovered = false;
 
+		bool m_PrimaryCamera = true;
+
 		Entity m_SquareEntity;
 
 		Ref<Scene> m_ActiveScene;
+
+		Entity m_CameraEntity, m_SecondCamera;
 	};
 }

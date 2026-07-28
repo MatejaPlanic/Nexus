@@ -17,6 +17,7 @@
 #include "Nexus/Scene/Scene.h" 
 #include "Nexus/Scene/Components.h"
 #include "Nexus/Scene/Entity.h"
+#include "Nexus/Scene/ScriptableEntity.h"
 
 #include "Nexus/Renderer/Buffer.h"
 #include "Nexus/Renderer/Shader.h"

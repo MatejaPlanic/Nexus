@@ -1443,6 +1443,9 @@
     <ClInclude Include="src\Nexus\Scene\Components.h" />
     <ClInclude Include="src\Nexus\Scene\Scene.h" />
     <ClInclude Include="src\Nexus\Scene\Entity.h" />
+    <ClInclude Include="src\Nexus\Renderer\Camera.h" />
+    <ClInclude Include="src\Nexus\Scene\SceneCamera.h" />
+    <ClInclude Include="src\Nexus\Scene\ScriptableEntity.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="external\stb_image\stb_image.cpp">
@@ -1534,5 +1537,6 @@
     </ClCompile>
     <ClCompile Include="src\Nexus\Scene\Scene.cpp" />
     <ClCompile Include="src\Nexus\Scene\Entity.cpp" />
+    <ClCompile Include="src\Nexus\Scene\SceneCamera.cpp" />
   </ItemGroup>
 </Project>
