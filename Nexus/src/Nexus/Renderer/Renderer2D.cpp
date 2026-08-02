@@ -155,6 +155,9 @@ namespace Nexus {
 	{
 		NX_PROFILE_FUNCTION();
 
+		if (s_Data->QuadIndexCount == 0)
+			return;
+
 		uint32_t dataSize = (uint8_t*)s_Data->QuadVertexBufferPtr - (uint8_t*)s_Data->QuadVertexBufferBase;
 		s_Data->VertexBuffer->SetData(s_Data->QuadVertexBufferBase, dataSize);
 
@@ -163,6 +166,9 @@ namespace Nexus {
 
 	void Renderer2D::Flush()
 	{
+		if (s_Data->QuadIndexCount == 0)
+			return;
+
 		for (uint32_t i = 0; i < s_Data->TextureSlotIndex; i++)
 		{
 			s_Data->TextureSlots[i]->Bind(i);

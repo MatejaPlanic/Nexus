@@ -29,6 +29,11 @@ namespace Nexus {
 		return entity;
 	}
 
+	void Scene::DestroyEntity(Entity entity)
+	{
+		m_Registry.destroy(entity);
+	}
+
 	void Scene::OnUpdate(Timestep ts)
 	{
 		// Update scripts
@@ -47,22 +52,22 @@ namespace Nexus {
 		}
 
 		Camera* mainCamera = nullptr;
-		glm::mat4* cameraTransform = nullptr;
+		glm::mat4 cameraTransform;
 		{
 			auto group = m_Registry.view<TransformComponent ,CameraComponent>();
 			group.each([&](auto entity, auto& transform, auto& camera)
 			{
-				if (camera.Primary)
+				if (camera.Primary && !mainCamera)
 				{
 					mainCamera = &camera.Camera;
-					cameraTransform = &transform.transform;
+					cameraTransform = transform.GetTransform();
 				}
 			});
 		}
 
 		if (mainCamera)
 		{
-			Renderer2D::BeginScene(*mainCamera, *cameraTransform);
+			Renderer2D::BeginScene(*mainCamera, cameraTransform);
 
 			auto group = m_Registry.group<TransformComponent>(entt::get<SpriteRendererComponent>);
 
@@ -70,7 +75,7 @@ namespace Nexus {
 			{
 				auto [transform, sprite] = group.get<TransformComponent, SpriteRendererComponent>(entity);
 
-				Renderer2D::DrawQuad(transform, sprite.Color);
+				Renderer2D::DrawQuad(transform.GetTransform(), sprite.Color);
 			}
 
 			Renderer2D::EndScene();

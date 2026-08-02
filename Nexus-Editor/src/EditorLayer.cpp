@@ -51,32 +51,36 @@ namespace Nexus {
 
 			void OnUpdate(Timestep ts)
 			{
-				auto& transform = GetComponent<TransformComponent>().transform;
+				auto& translation = GetComponent<TransformComponent>().Translation;
+				
 				float speed = 5.0f;
 
 				if (Input::IsKeyPressed(NX_KEY_A))
 				{
-					transform[3][0] -= speed * ts;
+					translation.x -= speed * ts;
 				}
 
 				else if (Input::IsKeyPressed(NX_KEY_D))
 				{
-					transform[3][0] += speed * ts;
+					translation.x += speed * ts;
 				}
 
 				if (Input::IsKeyPressed(NX_KEY_S))
 				{
-					transform[3][1] -= speed * ts;
+					translation.y -= speed * ts;
 				}
 
 				else if (Input::IsKeyPressed(NX_KEY_W))
 				{
-					transform[3][1] += speed * ts;
+					translation.y += speed * ts;
 				}
 			}
 		};
 
 		m_SecondCamera.AddComponent<NativeScriptComponent>().Bind<CameraController>();
+		m_CameraEntity.AddComponent<NativeScriptComponent>().Bind<CameraController>();
+
+		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
 	}
 
 	void EditorLayer::OnDetach()
@@ -155,11 +159,16 @@ namespace Nexus {
 
 		// Submit the DockSpace
 		ImGuiIO& io = ImGui::GetIO();
+		ImGuiStyle& style = ImGui::GetStyle();
+		float mixnWinSizeX = style.WindowMinSize.x;
+		style.WindowMinSize.x = 370.f;
 		if (io.ConfigFlags & ImGuiConfigFlags_DockingEnable)
 		{
 			ImGuiID dockspace_id = ImGui::GetID("MyDockSpace");
 			ImGui::DockSpace(dockspace_id, ImVec2(0.0f, 0.0f), dockspace_flags);
 		}
+
+		style.WindowMinSize.x = mixnWinSizeX;
 
 		if (ImGui::BeginMenuBar())
 		{
@@ -175,7 +184,9 @@ namespace Nexus {
 			ImGui::EndMenuBar();
 		}
 
-		ImGui::Begin("Settings");
+		m_SceneHierarchyPanel.OnImGuiRender();
+
+		ImGui::Begin("Stats");
 
 		auto stats = Renderer2D::GetStats();
 
@@ -184,33 +195,6 @@ namespace Nexus {
 		ImGui::Text("Quad Count: %d", stats.QuadCount);
 		ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
 		ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
-
-		if (m_SquareEntity)
-		{
-			ImGui::Separator();
-			auto& tag = m_SquareEntity.GetComponent<TagComponent>().Tag;
-			ImGui::Text("%s", tag.c_str());
-
-			auto& squareColor = m_SquareEntity.GetComponent<SpriteRendererComponent>().Color;
-			ImGui::ColorEdit4("Square Color", glm::value_ptr(squareColor));
-			ImGui::Separator();
-		}
-
-		ImGui::DragFloat3("Camera Transform",
-			glm::value_ptr(m_CameraEntity.GetComponent<TransformComponent>().transform[3]));
-
-		if (ImGui::Checkbox("Camera A", &m_PrimaryCamera))
-		{
-			m_CameraEntity.GetComponent<CameraComponent>().Primary = m_PrimaryCamera;
-			m_SecondCamera.GetComponent<CameraComponent>().Primary = !m_PrimaryCamera;
-		}
-
-		{
-			auto& camera = m_SecondCamera.GetComponent<CameraComponent>().Camera;
-			float orthoSize = camera.GetOrthographicSize();
-			if (ImGui::DragFloat("Second Camera Ortho Size", &orthoSize))
-				camera.SetOrthographicSize(orthoSize);
-		}
 
 		ImGui::End();
 

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Nexus.h"
+#include "Panels/SceneHierarchyPanel.h"
 
 namespace Nexus {
 	class EditorLayer : public Layer
@@ -45,5 +46,9 @@ namespace Nexus {
 		Ref<Scene> m_ActiveScene;
 
 		Entity m_CameraEntity, m_SecondCamera;
+
+		//Panels
+
+		SceneHierarchyPanel m_SceneHierarchyPanel;
 	};
 }
