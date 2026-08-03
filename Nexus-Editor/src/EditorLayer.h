@@ -17,6 +17,12 @@ namespace Nexus {
 		void OnImGuiRender() override;
 		void OnEvent(Event& event) override;
 	private:
+		bool OnKeyPressed(KeyPressedEvent& e);
+
+		void NewScene();
+		void OpenScene();
+		void SaveSceneAs();
+	private:
 		OrthographicCameraController m_CameraController;
 
 		Ref<VertexArray> m_SquareVertexArray;
@@ -50,5 +56,7 @@ namespace Nexus {
 		//Panels
 
 		SceneHierarchyPanel m_SceneHierarchyPanel;
+
+		int m_GizmoType = -1;
 	};
 }

@@ -17,10 +17,13 @@ IncludeDir["Imgui"] = "Nexus/external/imgui"
 IncludeDir["glm"] = "Nexus/external/glm"
 IncludeDir["entt"] = "Nexus/external/entt/include"
 IncludeDir["stb_image"] = "Nexus/external/stb_image"
+IncludeDir["yaml_cpp"] = "Nexus/external/yaml-cpp/include"
+IncludeDir["ImGuizmo"] = "Nexus/external/ImGuizmo"
 
 include "Nexus/external/glfw"
 include "Nexus/external/glad"
 include "Nexus/external/imgui"
+include "Nexus/external/yaml-cpp"
 
 project "Nexus"
 	location "Nexus"
@@ -40,7 +43,9 @@ project "Nexus"
 		"%{prj.name}/external/stb_image/**.cpp",
 		"%{prj.name}/external/stb_image/**.h",
 		"%{prj.name}/external/glm/glm/**.hpp",
-		"%{prj.name}/external/glm/glm/**.inl"
+		"%{prj.name}/external/glm/glm/**.inl",
+		"%{prj.name}/external/ImGuizmo/ImGuizmo.h",
+		"%{prj.name}/external/ImGuizmo/ImGuizmo.cpp"
 	}
 
 	includedirs
@@ -52,7 +57,9 @@ project "Nexus"
 		"%{IncludeDir.Imgui}",
 		"%{IncludeDir.glm}",
 		"%{IncludeDir.stb_image}",
-		"%{IncludeDir.entt}"
+		"%{IncludeDir.entt}",
+		"%{IncludeDir.yaml_cpp}",
+		"%{IncludeDir.ImGuizmo}"
 	}
 
 	links
@@ -60,8 +67,12 @@ project "Nexus"
 		"GLFW",
 		"Glad",
 		"Imgui",
+		"yaml-cpp",
 		"opengl32.lib"
 	}
+
+	filter "files:Nexus/external/ImGuizmo/**.cpp"
+		flags { "NoPCH" }
 
 	filter "system:windows"
 		cppdialect "C++23"
@@ -70,7 +81,8 @@ project "Nexus"
 		defines
 		{
 			"NX_PLATFORM_WINDOWS",
-			"GLFW_INCLUDE_NONE"
+			"GLFW_INCLUDE_NONE",
+			"YAML_CPP_STATIC_DEFINE"
 		}
 
 	filter "configurations:Debug"
@@ -166,7 +178,8 @@ project "Nexus-Editor"
 		"Nexus/src",
 		"%{IncludeDir.glm}",
 		"Nexus/external",
-		"%{IncludeDir.entt}"
+		"%{IncludeDir.entt}",
+		"%{IncludeDir.ImGuizmo}"
 	}
 
 	links

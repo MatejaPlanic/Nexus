@@ -4,6 +4,9 @@
     <Filter Include="external">
       <UniqueIdentifier>{2839F3DC-1406-4EE8-3D1F-3C90294B8376}</UniqueIdentifier>
     </Filter>
+    <Filter Include="external\ImGuizmo">
+      <UniqueIdentifier>{88789350-F48E-91E6-3D06-1D08A95B626E}</UniqueIdentifier>
+    </Filter>
     <Filter Include="external\glm">
       <UniqueIdentifier>{7717D728-637A-66CD-0C00-9F83F8413250}</UniqueIdentifier>
     </Filter>
@@ -46,6 +49,12 @@
     <Filter Include="src\Nexus\Renderer">
       <UniqueIdentifier>{957A17F5-815E-D84A-EABE-D29DD6C1C2CC}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Nexus\Scene">
+      <UniqueIdentifier>{6C723BDA-D8FD-A89E-E10E-2C934D19059F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Nexus\Utils">
+      <UniqueIdentifier>{AF0669DA-1B92-D69E-24A3-599390AD329F}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Platform">
       <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
     </Filter>
@@ -57,6 +66,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="external\ImGuizmo\ImGuizmo.h">
+      <Filter>external\ImGuizmo</Filter>
+    </ClInclude>
     <ClInclude Include="external\glm\glm\common.hpp">
       <Filter>external\glm\glm</Filter>
     </ClInclude>
@@ -1374,6 +1386,9 @@
     <ClInclude Include="src\Nexus\Renderer\Buffer.h">
       <Filter>src\Nexus\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Nexus\Renderer\Camera.h">
+      <Filter>src\Nexus\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Nexus\Renderer\FrameBuffer.h">
       <Filter>src\Nexus\Renderer</Filter>
     </ClInclude>
@@ -1410,6 +1425,27 @@
     <ClInclude Include="src\Nexus\Renderer\VertexArray.h">
       <Filter>src\Nexus\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Nexus\Scene\Components.h">
+      <Filter>src\Nexus\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nexus\Scene\Entity.h">
+      <Filter>src\Nexus\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nexus\Scene\Scene.h">
+      <Filter>src\Nexus\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nexus\Scene\SceneCamera.h">
+      <Filter>src\Nexus\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nexus\Scene\SceneSerializer.h">
+      <Filter>src\Nexus\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nexus\Scene\ScriptableEntity.h">
+      <Filter>src\Nexus\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nexus\Utils\PlatformUtils.h">
+      <Filter>src\Nexus\Utils</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
@@ -1440,14 +1476,11 @@
     <ClInclude Include="src\nxpch.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Nexus\Scene\Components.h" />
-    <ClInclude Include="src\Nexus\Scene\Scene.h" />
-    <ClInclude Include="src\Nexus\Scene\Entity.h" />
-    <ClInclude Include="src\Nexus\Renderer\Camera.h" />
-    <ClInclude Include="src\Nexus\Scene\SceneCamera.h" />
-    <ClInclude Include="src\Nexus\Scene\ScriptableEntity.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="external\ImGuizmo\ImGuizmo.cpp">
+      <Filter>external\ImGuizmo</Filter>
+    </ClCompile>
     <ClCompile Include="external\stb_image\stb_image.cpp">
       <Filter>external\stb_image</Filter>
     </ClCompile>
@@ -1505,6 +1538,18 @@
     <ClCompile Include="src\Nexus\Renderer\VertexArray.cpp">
       <Filter>src\Nexus\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Nexus\Scene\Entity.cpp">
+      <Filter>src\Nexus\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nexus\Scene\Scene.cpp">
+      <Filter>src\Nexus\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nexus\Scene\SceneCamera.cpp">
+      <Filter>src\Nexus\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nexus\Scene\SceneSerializer.cpp">
+      <Filter>src\Nexus\Scene</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
@@ -1529,14 +1574,14 @@
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsPlatformUtils.cpp">
+      <Filter>src\Platform\Windows</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\nxpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Nexus\Scene\Scene.cpp" />
-    <ClCompile Include="src\Nexus\Scene\Entity.cpp" />
-    <ClCompile Include="src\Nexus\Scene\SceneCamera.cpp" />
   </ItemGroup>
 </Project>
