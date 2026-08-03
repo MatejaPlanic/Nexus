@@ -10,3 +10,9 @@
 [submodule "Nexus/external/glm"]
 	path = Nexus/external/glm
 	url = https://github.com/g-truc/glm
+[submodule "Nexus/external/yaml-cpp"]
+	path = Nexus/external/yaml-cpp
+	url = https://github.com/TheCherno/yaml-cpp
+[submodule "Nexus/external/ImGuizmo"]
+	path = Nexus/external/ImGuizmo
+	url = https://github.com/TheCherno/ImGuizmo
