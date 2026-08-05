@@ -3,6 +3,8 @@
 #include "entt.hpp"
 #include "Nexus/Core/Timestep.h"
 
+#include "Nexus/Renderer/EditorCamera.h"
+
 namespace Nexus {
 
 	class Entity;
@@ -16,7 +18,8 @@ namespace Nexus {
 		Entity CreateEntity(const std::string& name = std::string());
 		void DestroyEntity(Entity entity);
 
-		void OnUpdate(Timestep ts);
+		void OnUpdateEditor(Timestep ts, EditorCamera& camera);
+		void OnUpdateRuntime(Timestep ts);
 		void OnViewportResize(uint32_t width, uint32_t height);
 
 		Entity GetPrimaryCameraEntity();

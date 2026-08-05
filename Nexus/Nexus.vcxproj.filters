@@ -1476,6 +1476,8 @@
     <ClInclude Include="src\nxpch.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\Nexus\Math\Math.h" />
+    <ClInclude Include="src\Nexus\Renderer\EditorCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="external\ImGuizmo\ImGuizmo.cpp">
@@ -1583,5 +1585,7 @@
     <ClCompile Include="src\nxpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Nexus\Math\Math.cpp" />
+    <ClCompile Include="src\Nexus\Renderer\EditorCamera.cpp" />
   </ItemGroup>
 </Project>

@@ -594,6 +594,7 @@
     <ClInclude Include="src\Nexus\Math\Math.h" />
     <ClInclude Include="src\Nexus\Renderer\Buffer.h" />
     <ClInclude Include="src\Nexus\Renderer\Camera.h" />
+    <ClInclude Include="src\Nexus\Renderer\EditorCamera.h" />
     <ClInclude Include="src\Nexus\Renderer\FrameBuffer.h" />
     <ClInclude Include="src\Nexus\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Nexus\Renderer\OrthographicCamera.h" />
@@ -637,6 +638,7 @@
     <ClCompile Include="src\Nexus\Imgui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Nexus\Math\Math.cpp" />
     <ClCompile Include="src\Nexus\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Nexus\Renderer\EditorCamera.cpp" />
     <ClCompile Include="src\Nexus\Renderer\FrameBuffer.cpp" />
     <ClCompile Include="src\Nexus\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Nexus\Renderer\OrthographicCameraController.cpp" />

@@ -3,6 +3,8 @@
 #include "Nexus.h"
 #include "Panels/SceneHierarchyPanel.h"
 
+#include "Nexus/Renderer/EditorCamera.h"
+
 namespace Nexus {
 	class EditorLayer : public Layer
 	{
@@ -58,5 +60,7 @@ namespace Nexus {
 		SceneHierarchyPanel m_SceneHierarchyPanel;
 
 		int m_GizmoType = -1;
+
+		EditorCamera m_EditorCamera;
 	};
 }
